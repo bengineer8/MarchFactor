@@ -59,7 +59,7 @@ public class MarchFactors{//This will be updated later to support larger input
       i++;}}
       if(F[0]==0||F[0]==o){
         System.out.println("The smallest number with "+o+" factors is:");
-        System.out.print("("+2+"^"+(o-1)+")"));
+        System.out.print("("+2+"^"+(o-1)+")");
         System.out.println("\nAKA:");
         if(Math.log10(2)*(o-1)<1000)System.out.println(m);
         else System.out.println("~"+Math.pow(10,Math.log10(2)*(o-1)-((int)(Math.log10(2)*(o-1))))+" x10^"+(int)(Math.log10(2)*(o-1)));
