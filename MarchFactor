@@ -58,8 +58,8 @@ public class MarchFactors{//This will be updated later to support larger input
         }
       i++;}}
       if(F[0]==0||F[0]==o){
-        if(Math.log10(2)*o<1000)System.out.println(m);
-        else System.out.println("~"+Math.pow(10,Math.log10(2)*o-((int)(Math.log10(2)*o)))+" x10^"+(int)(Math.log10(2)*o));
+        if(Math.log10(2)*(o-1)<1000)System.out.println(m);
+        else System.out.println("~"+Math.pow(10,Math.log10(2)*(o-1)-((int)(Math.log10(2)*(o-1))))+" x10^"+(int)(Math.log10(2)*(o-1)));
       }
       else{
         F=aC(F);
