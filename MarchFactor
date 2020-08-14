@@ -1,0 +1,78 @@
+import java.math.BigInteger;
+public class MarchFactors{//This will be updated later to support larger input
+  public static BigInteger m;
+  public static int F[], p[], E[], Em[];
+  public static void Try(int N, int s, int i){
+    if(N>1){for(int I=s;I<F.length;I++){if(N%F[I]==0){
+      E[i]=F[I]-1;
+      Try(N/F[I],I,i+1);}}}
+    else{
+      BigInteger M=new BigInteger("1");
+      for(int n=0;n<i;n++) M=M.multiply(new BigInteger(""+p[n]).pow(E[n]));
+      m=m.min(M);
+      if(m.equals(M)){
+        for(int n=0;n<E.length;Em[n]=E[n++]);}}}
+  public static int[] aC(int[] a){
+    int t[], i=0;
+    while(i<a.length&&a[i]!=0)i++;
+    if(i==a.length) return a;
+    t=new int[i];
+    i=0;
+    while(i<t.length) t[i]=a[i++];
+    return t;}
+  public static void main(String[] Ugh){
+    int o;
+    {boolean v;String S;do{
+      System.out.println("Input a positive integer that is less than 2147483648 in base 10 and then press Enter.");
+      S=StdIn.readString();
+      v=true;
+      if(v) for(int n=0;n<S.length()&&v;n++) {if(48>S.codePointAt(n)||S.codePointAt(n)>57) {v=false;
+        System.out.println("Your input was not a valid, base 10 Integer. Make sure your input only copntains arabic numerals (0,1,2,3,4,5,6,7,8,9).");}}
+      if(v){BigInteger O =new BigInteger(S);if(O==O.max(new BigInteger("2147483648"))){v=false;
+      System.out.println("Your input was not less than 2147483648.");}}
+    }while(!v);o=Integer.parseInt(S);}
+    m=new BigInteger("2");
+    m=m.pow(o-1);
+    if(o==1) System.out.println(1);
+    else{
+      p=new int[1+(int)(Math.log(o)/Math.log(2))];
+      F=new int[2*(int)Math.ceil(Math.sqrt(o))];
+      int f=0; 
+      p[0]=2;
+      if(o%2==0) {F[F.length-1]=2;F[0]=o/2;}
+      {int i=1,x=3,I=1-o%2;//generating all possibly needed primes
+        while((x<1+(int)Math.sqrt(o)||i<p.length)&&p[i-1]!=o){
+          if(i<p.length){boolean P=true;
+          for(int n=0;P&&n<i;n++) P=0!=x%p[n];
+            if(P) p[i++]=x;}
+          if(o%x==0&&x<1+(int)Math.sqrt(o)) {
+            F[F.length-I-1]=x;
+            if(x!=o/x) F[I]=o/x;
+            I++;
+          }
+          x++;}}
+      {int i=0,I=0;while(i<F.length&&I<F.length-1){
+        if(F[i]==0){
+          for(I=i+1;I<F.length&&F[I]==0;I++);
+          if(I<F.length){F[i]=F[I];F[I]=0;}
+        }
+      i++;}}
+      if(F[0]==0||F[0]==o){
+        if(Math.log10(2)*o<1000)System.out.println(m);
+        else System.out.println("~"+Math.pow(10,Math.log10(2)*o-((int)(Math.log10(2)*o)))+" x10^"+(int)(Math.log10(2)*o));
+      }
+      else{
+        F=aC(F);
+//      for(int n=0;n<F.length;System.out.println(F[n++]));System.out.println();
+        E=new int[p.length];
+        Em=new int[p.length];
+        Try(o,0,0);
+        Em=aC(Em);
+        System.out.println("The smallest number with "+o+" factors is:");
+        for(int n=0;n<Em.length;System.out.print("("+p[n]+"^"+Em[n++]+")"));
+        System.out.println("\nAKA:");
+        System.out.println(m);
+      }
+    }
+  }
+}
