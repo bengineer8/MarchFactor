@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 public class MarchFactors{//This will be updated later to support larger input
   public static BigInteger m;
-  public static int F[], p[], E[], Em[];
+  public static int F[], p[], E[], Em[], digitlimit=3333;//adjust the last one if your computer can handle more than ~1000 digits
   public static void Try(int N, int s, int i){
     if(N>1){for(int I=s;I<F.length;I++){if(N%F[I]==0){
       E[i]=F[I]-1;
@@ -32,7 +32,6 @@ public class MarchFactors{//This will be updated later to support larger input
       System.out.println("Your input was not less than 2147483648.");}}
     }while(!v);o=Integer.parseInt(S);}
     m=new BigInteger("2");
-    m=m.pow(o-1);
     if(o==1) System.out.println(1);
     else{
       p=new int[1+(int)(Math.log(o)/Math.log(2))];
@@ -61,7 +60,7 @@ public class MarchFactors{//This will be updated later to support larger input
         System.out.println("The smallest number with "+o+" factors is:");
         System.out.print("("+2+"^"+(o-1)+")");
         System.out.println("\nAKA:");
-        if(Math.log10(2)*(o-1)<1000)System.out.println(m);
+        if(m.bitLength()<digitlimit) System.out.println(m);
         else System.out.println("~"+Math.pow(10,Math.log10(2)*(o-1)-((int)(Math.log10(2)*(o-1))))+" x10^"+(int)(Math.log10(2)*(o-1)));
       }
       else{
@@ -74,7 +73,12 @@ public class MarchFactors{//This will be updated later to support larger input
         System.out.println("The smallest number with "+o+" factors is:");
         for(int n=0;n<Em.length;System.out.print("("+p[n]+"^"+Em[n++]+")"));
         System.out.println("\nAKA:");
-        System.out.println(m);
+        if(m.bitLength()<digitlimit) System.out.println(m);
+        else{
+          double l=0;
+          for(int n=0;n<Em.length;l+=Em[n]*Math.log10(p[n++]));
+          System.out.println("~"+Math.round(Math.pow(10,l-Math.floor(l)))+" x10^"+(long)Math.floor(l));
+        }
       }
     }
   }
