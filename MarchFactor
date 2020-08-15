@@ -32,6 +32,7 @@ public class MarchFactors{//This will be updated later to support larger input
       System.out.println("Your input was not less than 2147483648.");}}
     }while(!v);o=Integer.parseInt(S);}
     m=new BigInteger("2");
+    m=m.pow(o-1);
     if(o==1) System.out.println(1);
     else{
       p=new int[1+(int)(Math.log(o)/Math.log(2))];
@@ -61,7 +62,7 @@ public class MarchFactors{//This will be updated later to support larger input
         System.out.print("("+2+"^"+(o-1)+")");
         System.out.println("\nAKA:");
         if(m.bitLength()<digitlimit) System.out.println(m);
-        else System.out.println("~"+Math.pow(10,Math.log10(2)*(o-1)-((int)(Math.log10(2)*(o-1))))+" x10^"+(int)(Math.log10(2)*(o-1)));
+        else System.out.println("~"+Math.round(Math.pow(10,3+Math.log10(2)*(o-1)-((int)(Math.log10(2)*(o-1)))))/1000.0+" x10^"+(int)(Math.log10(2)*(o-1)));
       }
       else{
         F=aC(F);
@@ -77,7 +78,7 @@ public class MarchFactors{//This will be updated later to support larger input
         else{
           double l=0;
           for(int n=0;n<Em.length;l+=Em[n]*Math.log10(p[n++]));
-          System.out.println("~"+Math.round(Math.pow(10,l-Math.floor(l)))+" x10^"+(long)Math.floor(l));
+          System.out.println("~"+(Math.round(Math.pow(10,3+l-Math.floor(l)))/1000.0)+" x10^"+(long)Math.floor(l));
         }
       }
     }
